@@ -17,18 +17,21 @@ public class SaleService {
     HashMap<String, ICalculateService> calculateServiceMaps = new HashMap<>();
 
     /**
+     *     这种注入方式的生成的map，map的key是bean name,value是bean
+     *     @Autowired
+     *     Map<String ,  I CalculateService> map;
+     */
+
+    /**
      * 将所有实现Calculate接口的service都存放到hashmap中
+     * @Autowired List<ICalculateService> calculateServices 使用spring注入的高级功能,将ICalculateService的实现类全部注入到
      * @param calculateServices
      */
     @Autowired
     public SaleService(List<ICalculateService> calculateServices){
-        calculateServices.forEach(n -> {
-            calculateServiceMaps.put(n.getUserType(), n);
-        });
+        //kay是userType，value是bean
+        calculateServices.forEach(n -> calculateServiceMaps.put(n.getUserType(), n));
     }
-
-//    @Autowired //这种注入方式已实现类的bean name（默认首字母小写service名，或使用@Service（“servicename”）重命名）
-//    Map<String, ICalculateService> map;
 
     /**
      * 根据用户类型和总金额来返回打折后的金额
