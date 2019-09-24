@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import zhang.desingmode.aop.DBOperation;
 import zhang.desingmode.observer.OrderService;
 import zhang.desingmode.strategy.SaleService;
 
@@ -43,5 +44,14 @@ public class DesingModeApplicationTests {
         Double fee = saleService.sale(userType, money);
         System.out.println(userType + " sale : " + fee);
     }
+
+    @Autowired
+    DBOperation dbOperation;
+    @Test
+    public void useAnnotationtest() {
+        dbOperation.doSomething();
+    }
+
+
 
 }
