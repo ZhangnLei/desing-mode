@@ -1,6 +1,7 @@
-package zhang.desingmode.strategy;
+package zhang.desingmode.strategy.service.impl;
 
 import org.springframework.stereotype.Service;
+import zhang.desingmode.strategy.service.ICalculateService;
 
 /**
  * @author zhangnianlei
@@ -15,7 +16,7 @@ public class NormalCalculateService implements ICalculateService {
     }
 
     @Override
-    public Double getFee(String userType, Double fee) {
+    public Double getFee(Double fee) {
         return fee;
     }
 }
